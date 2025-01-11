@@ -1,4 +1,7 @@
 # CTR-DeepFM
+
+# Part 1: Literature Survey
+
 CTR Study with DeepFM Recommender System
 
 
@@ -78,7 +81,7 @@ We can see from the graph below that training of DeepFM is computationally fast:
  1) activation functions; 2) dropout rate; 3) number of neurons per
 layer; 4) number of hidden layers; 5) network shape
 
-Activation Function
+#### Activation Function
 ReLU performs better than tanh because it incudes (produces) sparsity. 
 
 Dropout Rate
@@ -86,17 +89,48 @@ Formally, Dropout [Srivastava et al., 2014] refers to the probability that a neu
 
 ![image](https://github.com/user-attachments/assets/eadab816-1f44-43ef-91f5-d73c47455a62)
 
+#### Number of Neurons per Layer
+More neurons may seem to give a better performance in the NN, however, when the number of neurons per layer is increased from 400 to 800 in DeepFM it performs worse. The reason is that it creates complexity and likelihood of overfitting. See the picture below:
+
+![image](https://github.com/user-attachments/assets/1222f7f2-1269-4ff3-8290-26ab59c2d731)
+
+#### Number of Hidden Layers
+Adding more hidden layers initially improves model performance, but excessive hidden layers lead to performance degradation due to overfitting. See the picture below
+
+![image](https://github.com/user-attachments/assets/cfa51689-b5a9-42a9-89a8-6e009ea6ae53)
+
+#### Network Shape
+Among the network shapes such as constant, increasing, decreasing, and diamond; constant performs the best empirically. See the picture below:
+
+![image](https://github.com/user-attachments/assets/ce26e8a1-d5a4-4cc8-ab89-5635e1db2cdd)
+
+
+# Part 2: Coding
+
+Without ablating any component from DeepFM model:
+VALIDATION: 2025-01-11 22:31:42,052 P93939 INFO [Metrics] logloss: 0.277579 - AUC: 0.940215
+TEST: 2025-01-11 22:21:56,726 P92535 INFO [Metrics] logloss: 0.279154 - AUC: 0.938828
+
+ABLATING fm_layer:
+2025-01-11 22:34:58,738 P99929 INFO [Metrics] logloss: 0.277089 - AUC: 0.940662
+2025-01-11 22:35:00,561 P99929 INFO [Metrics] logloss: 0.278857 - AUC: 0.939273
+
+ABLATING lr_layer:
+2025-01-11 22:36:18,301 P844 INFO [Metrics] logloss: 0.275595 - AUC: 0.941753
+2025-01-11 22:36:20,439 P844 INFO [Metrics] logloss: 0.277889 - AUC: 0.940216
+
+ABLATING MLP:
+2025-01-11 22:41:06,602 P4214 INFO [Metrics] logloss: 0.296013 - AUC: 0.934477
+2025-01-11 22:41:08,312 P4214 INFO [Metrics] logloss: 0.298439 - AUC: 0.932126
 
 
 
+# 2.2 
+Integrating the CrossNet by concatenating to the MLP layer in the following way:
 
+<img width="492" alt="image" src="https://github.com/user-attachments/assets/49c7b0f0-2410-4a63-a2cf-4ee797e93020" />
 
+our new findings are as follows:
 
-
-
-
-
-
-
-
- 
+2025-01-12 00:05:22,555 P47965 INFO [Metrics] logloss: 0.296013 - AUC: 0.934477
+2025-01-12 00:05:25,325 P47965 INFO [Metrics] logloss: 0.298439 - AUC: 0.932126
