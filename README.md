@@ -26,7 +26,7 @@ Factorization Machine does it by computing the inner products of the latent vect
 
 ## 1.b
 
-### Arch
+### Architecture
 
 ![image](https://github.com/user-attachments/assets/55c30e86-fa00-406c-ba57-64c5efcab494)
 
@@ -36,7 +36,7 @@ In Deep Component, there is one challenge we need to tackle with: We're dealing 
 
 ![image](https://github.com/user-attachments/assets/119e7910-8d39-41ea-a3b5-994dea049302)
 
-### Math
+### Mathematic
 
 ![image](https://github.com/user-attachments/assets/ea8a1da4-64f2-4739-925b-f31d172e2a72)
 
@@ -107,30 +107,48 @@ Among the network shapes such as constant, increasing, decreasing, and diamond; 
 
 # Part 2: Coding
 
-Without ablating any component from DeepFM model:
-VALIDATION: 2025-01-11 22:31:42,052 P93939 INFO [Metrics] logloss: 0.277579 - AUC: 0.940215
-TEST: 2025-01-11 22:21:56,726 P92535 INFO [Metrics] logloss: 0.279154 - AUC: 0.938828
+### Validation and Test Metrics for DeepFM Model and Ablations
 
-ABLATING fm_layer:
-2025-01-11 22:34:58,738 P99929 INFO [Metrics] logloss: 0.277089 - AUC: 0.940662
-2025-01-11 22:35:00,561 P99929 INFO [Metrics] logloss: 0.278857 - AUC: 0.939273
+#### Without Ablating Any Component:
+- **Validation**:  
+  - **Log Loss**: 0.277579  
+  - **AUC (Area Under Curve)**: 0.940215  
+- **Test**:  
+  - **Log Loss**: 0.279154  
+  - **AUC (Area Under Curve)**: 0.938828  
 
-ABLATING lr_layer:
-2025-01-11 22:36:18,301 P844 INFO [Metrics] logloss: 0.275595 - AUC: 0.941753
-2025-01-11 22:36:20,439 P844 INFO [Metrics] logloss: 0.277889 - AUC: 0.940216
+#### Ablating `fm_layer`:
+- **Validation**:  
+  - **Log Loss**: 0.277089  
+  - **AUC (Area Under Curve)**: 0.940662  
+- **Test**:  
+  - **Log Loss**: 0.278857  
+  - **AUC (Area Under Curve)**: 0.939273  
 
-ABLATING MLP:
-2025-01-11 22:41:06,602 P4214 INFO [Metrics] logloss: 0.296013 - AUC: 0.934477
-2025-01-11 22:41:08,312 P4214 INFO [Metrics] logloss: 0.298439 - AUC: 0.932126
+#### Ablating `lr_layer`:
+- **Validation**:  
+  - **Log Loss**: 0.275595  
+  - **AUC (Area Under Curve)**: 0.941753  
+- **Test**:  
+  - **Log Loss**: 0.277889  
+  - **AUC (Area Under Curve)**: 0.940216  
 
+#### Ablating `MLP`:
+- **Validation**:  
+  - **Log Loss**: 0.296013  
+  - **AUC (Area Under Curve)**: 0.934477  
+- **Test**:  
+  - **Log Loss**: 0.298439  
+  - **AUC (Area Under Curve)**: 0.932126  
 
+---
 
-# 2.2 
-Integrating the CrossNet by concatenating to the MLP layer in the following way:
+### Merging CrossNet by Concatenating to the MLP Layer
 
-<img width="492" alt="image" src="https://github.com/user-attachments/assets/49c7b0f0-2410-4a63-a2cf-4ee797e93020" />
-
-our new findings are as follows:
-
-2025-01-12 00:05:22,555 P47965 INFO [Metrics] logloss: 0.296013 - AUC: 0.934477
-2025-01-12 00:05:25,325 P47965 INFO [Metrics] logloss: 0.298439 - AUC: 0.932126
+#### Metrics:
+- **Validation**:  
+  - **Log Loss**: 0.296013  
+  - **AUC (Area Under Curve)**: 0.934477  
+- **Test**:  
+  - **Log Loss**: 0.298439  
+  - **AUC (Area Under Curve)**: 0.932126  
