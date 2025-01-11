@@ -104,6 +104,8 @@ Among the network shapes such as constant, increasing, decreasing, and diamond; 
 
 ![image](https://github.com/user-attachments/assets/ce26e8a1-d5a4-4cc8-ab89-5635e1db2cdd)
 
+## 2
+We are working with highly sparse data, I reckon we m
 
 # Part 2: Coding
 
