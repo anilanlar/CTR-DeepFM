@@ -1,0 +1,16 @@
+### Tiny data for demo only
+frappe:
+    data_root: ../
+    data_format: csv
+    train_data: ../train.csv
+    valid_data: ../valid.csv
+    test_data: ../test.csv
+    min_categr_count: 1
+    feature_cols:
+        [{name: ["user","item","daytime","weekday","isweekend","homework","cost","weather","country","city"], 
+             active: True, dtype: str, type: categorical}]
+
+
+
+    label_col: {name: label, dtype: float}
+
