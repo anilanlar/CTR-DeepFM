@@ -1,4 +1,28 @@
-### Introduction to CTR Prediction Problem
+# Running the Application
+
+## Prerequisites
+Make sure you have Python installed on your system. You can download it from [python.org](https://www.python.org/downloads/).
+
+## Installation
+1. Clone the repository or download the source code.
+2. Navigate to the project directory.
+3. Install the required dependencies by running:
+
+```sh
+pip install -r requirements.txt
+```
+
+## Running the Application
+After installing the dependencies, run the following command to start the application:
+
+```sh
+python3 DeepFM_with_csv_input.py
+```
+
+To remove components such as CrossNet or Deep part and Factorization Machine part of the DeepFM you can modify the file model_zoo/DeepFM/DeepFM_torch/src/DeepFM.py
+
+
+# Introduction to CTR Prediction Problem
 
 Click-Through Rate (CTR) prediction is a fundamental problem in online advertising, e-commerce, and recommendation systems. It involves estimating the probability that a user will click on a given item, such as an advertisement, product, or content, based on historical data and user behavior.
 
